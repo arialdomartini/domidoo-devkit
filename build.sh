@@ -21,7 +21,7 @@ cp hosts /usr/local/etc/ansible/hosts
 chmod 644 /usr/local/etc/ansible/hosts
 
 echo -e "\n> Setting permissions on remote server"
-cat ~/.ssh/id_rsa.pub | ssh root@37.247.55.31 "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh root@37.247.55.31 "mkdir -p ~/.ssh; cat > ~/.ssh/authorized_keys"
 
 echo -e "\n> Testing ansible..."
 ansible all -m ping -u root

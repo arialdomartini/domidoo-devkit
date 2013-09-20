@@ -12,7 +12,7 @@ echo -e "\n> Installing ansible..."
 pip install paramiko
 pip install pyyaml
 pip install jinja2
-brew install https://raw.github.com/mnot/homebrew-stuff/master/ansible.rb
+brew install https://raw.github.com/arialdomartini/homebrew-stuff/master/ansible.rb
 
 
 echo -e "\n> Configuring ansible..."

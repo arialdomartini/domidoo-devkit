@@ -8,7 +8,7 @@ brew install git
 
 echo -e "\n> Installing python..."
 brew install python
-
+pip install virtualenv
 
 echo -e "\n> Installing ansible..."
 pip install paramiko

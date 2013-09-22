@@ -28,6 +28,10 @@ cat ~/.ssh/id_rsa.pub | ssh root@${SERVER} "mkdir -p ~/.ssh; cat > ~/.ssh/author
 echo -e "\n> Testing ansible..."
 ansible all -m ping -u root
 
+echo -e "\n> Installing base packages in the remote server"
+ansible -v prod -a "apt-get update" -u root
+ansible -v prod -a "apt-get -y install python-apt" -u root
+
 echo -e "\n> Creating the user ${USER} in the remote server"
 ansible-playbook init.yml -u root
 

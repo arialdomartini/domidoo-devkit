@@ -15,7 +15,7 @@
     user: name=$ssh_user state=present shell=/bin/bash groups=admins
     tags: init
 
-  - name: INIT | Current ssh user's public key is authorized
+  - name: INIT | Current user's ssh public key is authorized
     authorized_key: user=$ssh_user key="$FILE(~/.ssh/id_rsa.pub)"
     tags: init
 

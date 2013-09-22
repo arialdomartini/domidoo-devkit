@@ -25,4 +25,6 @@
 
   - name: INIT | nginx is installed
     apt: pkg=nginx state=present
-    tags: init
+    tags:
+       - init
+       - install

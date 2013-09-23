@@ -36,11 +36,11 @@ echo -e "\n> Installing packages for accelerating ansible"
 ansible -v prod -a "pip install --pre python-keyczar" -u root
 pip install --pre python-keyczar
 
-echo -e "\n> Creating the user ${USER} in the remote server"
+echo -e "\n> Installing services on remote server"
 ansible-playbook init.yml -u root
 
 
-echo -e "\n\nAmazing!"
+echo -e "\n\Sweet!"
 echo -e "git, python and ansible are installed on this machine."
 echo -e "The user ${USER} can ssh the remote $SERVER and control it with ansible"
 echo -e "\n${USER} is a remote machine sudoer, and can even login as root."

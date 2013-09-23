@@ -3,6 +3,7 @@
   user: root
   sudo: no
   accelerate: true
+  gather_facts: no
   tags: init
   vars:
   - ssh_user: $ENV(USER)

@@ -32,6 +32,10 @@ echo -e "\n> Installing base packages in the remote server"
 ansible -v prod -a "apt-get update" -u root
 ansible -v prod -a "apt-get -y install python-apt" -u root
 
+echo -e "\n> Installing packages for accelerating ansible"
+ansible -v prod -a "pip install --pre python-keyczar" -u root
+pip install --pre python-keyczar
+
 echo -e "\n> Creating the user ${USER} in the remote server"
 ansible-playbook init.yml -u root
 

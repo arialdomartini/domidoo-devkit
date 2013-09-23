@@ -2,6 +2,7 @@
 - hosts: prod
   user: root
   sudo: no
+  accelerate: true
   tags: init
   vars:
   - ssh_user: $ENV(USER)

@@ -31,6 +31,9 @@ ansible all -m ping -u root
 echo -e "\n> Installing base packages in the remote server"
 ansible -v prod -a "apt-get update" -u root
 ansible -v prod -a "apt-get -y install python-apt" -u root
+ansible -v prod -a "apt-get -y install python-pip python-dev build-essential" -u root
+ansible -v prod -a "pip install --upgrade pip" -u root
+ansible -v prod -a "pip install --upgrade virtualenv" -u root
 
 echo -e "\n> Installing packages for accelerating ansible"
 ansible -v prod -a "pip install --pre python-keyczar" -u root

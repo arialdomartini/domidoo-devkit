@@ -2,31 +2,25 @@
 - hosts: prod
   user: root
   sudo: no
-  accelerate: true
   gather_facts: no
-  tags: init
-  vars:
-  - ssh_user: $ENV(USER)
 
   tasks:
-  - name: INIT | There's an Admin system group
-    group: name=admins system=yes state=present
-    tags: init
+  - name: deb package list is up-to-date
+    command: apt-get update
 
-  - name: INIT | The current ssh user has an admin account
-    user: name=$ssh_user state=present shell=/bin/bash groups=admins
-    tags: init
+  - name: python-apt is installed
+    command: apt-get -y install python-apt
 
-  - name: INIT | Current user's ssh public key is authorized
-    authorized_key: user=$ssh_user key="$FILE(~/.ssh/id_rsa.pub)"
-    tags: init
+  - name: pip is installed
+    command: apt-get -y install python-pip python-dev build-essential
 
-  - name: INIT | Install sudoers file for admin accounts
-    lineinfile: "dest=/etc/sudoers.d/admins state=present create=yes regexp='^%admins' line='%admins ALL=(ALL:ALL) NOPASSWD: SETENV: ALL' owner=root group=root mode=0440"
-    tags: init
+  - name: pip is up-to-date
+    command: pip install --upgrade pip
 
-  - name: INIT | nginx is installed
-    apt: pkg=nginx state=present
-    tags:
-       - init
-       - install
+  - name: virtualenv is installed
+    command: pip install --upgrade virtualenv
+
+  - name: python-keyczar is present; ansible accelerated mode can be enabled
+    command: pip install --pre python-keyczar
+
+

@@ -3,6 +3,12 @@ set -u
 
 SERVER=37.247.55.31
 
+has_brew=`which brew`
+if [ -z ${has_brew} ]; then
+    echo -r "> Installing brew..."
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+fi
+ 
 echo -e "> Installing git..."
 brew install git
 
